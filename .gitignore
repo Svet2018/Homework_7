@@ -1,0 +1,7 @@
+*.vscode/
+bin/
+obj/
+*.csproj
+*json
+.vscode/
+.vscode
