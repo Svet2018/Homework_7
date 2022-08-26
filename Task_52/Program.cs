@@ -47,9 +47,9 @@ string answer = String.Empty;
 for(int i = 0; i < newArray.GetLength(1); i++)
 {
     double sum = 0;
-    for (int x = 0; x < newArray.GetLength(0); x++)
+    for (int j = 0; j < newArray.GetLength(0); j++)
         {
-            sum = sum + newArray[x, i];
+            sum = sum + newArray[j, i];
         }
     answer = answer + (sum/newArray.GetLength(0)).ToString("F02") + "; "; 
 }
