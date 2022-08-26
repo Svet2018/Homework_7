@@ -53,6 +53,8 @@ for(int i = 0; i < newArray.GetLength(1); i++)
         }
     answer = answer + (sum/newArray.GetLength(0)).ToString("F02") + "; "; 
 }
+
+answer = answer.Remove(answer.Length - 2) + ".";
 System.Console.WriteLine($"Среднеарифметическое каждого из столбцов равно: {answer}");
 
 
