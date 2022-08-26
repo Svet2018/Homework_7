@@ -12,9 +12,8 @@ void GenerateArray(int [,] array)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-           array[i,j] = new Random().Next(1,10);
-        }
-        
+           array[i,j] = new Random().Next(1,5);
+        }       
     } 
 }
 
@@ -31,6 +30,7 @@ void PrintArray(int [,] array)
     }
 }
 
+
 System.Console.WriteLine("Введите количество строк массива. ");
 int row = Convert.ToInt32(Console.ReadLine());
 System.Console.WriteLine("Введите количество столбцов массива. ");
@@ -38,44 +38,21 @@ int col = Convert.ToInt32(Console.ReadLine());
 
 int [,] newArray = new int [row, col];
 
-
 GenerateArray(newArray);
 PrintArray(newArray);
+System.Console.WriteLine();
 
-int max = newArray[0,0];
-int maxi = 0;
-int maxj = 0;
+string answer = String.Empty;
 
-int min = newArray[0,0];
-int mini = 0;
-int minj = 0;
-
-double arithmeticMean = 0;
-
-for (int i = 0; i < row; i++)
+for(int i = 0; i < newArray.GetLength(1); i++)
 {
-    for (int j = 0; j < col; j++)
-    {
-        if (newArray[i,j] > max) 
+    double sum = 0;
+    for (int x = 0; x < newArray.GetLength(0); x++)
         {
-            max = newArray[i,j];
-            maxi = i;
-            maxj = j;
+            sum = sum + newArray[x, i];
         }
-        if (newArray[i,j] < min) 
-        {
-            min = newArray[i,j];
-            mini = i;
-            minj = j;
-        }
-        arithmeticMean = (arithmeticMean + newArray[i,j]);
-    }
-   
+    answer = answer + (sum/newArray.GetLength(0)).ToString("F02") + "; "; 
 }
-arithmeticMean = arithmeticMean/(row * col);
+System.Console.WriteLine($"Среднеарифметическое каждого из столбцов равно: {answer}");
 
-
-System.Console.WriteLine($"min = {min}, min[{mini} , {minj}]");
-System.Console.WriteLine($"max = {max}, max[{maxi} , {maxj}]");
-System.Console.WriteLine(arithmeticMean.ToString("F02"));
 
